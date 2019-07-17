@@ -19,5 +19,5 @@ before_install:
   - sudo mysql_upgrade -u root -p123456
   - sudo service mysql restart
   - mysql -u root -p123456 -e 'CREATE DATABASE febs_security;'
-install: mvn clean package
-script: mvn test -B -Ptest
+install: mvn clean package -Ptest
+script: mvn test -B
