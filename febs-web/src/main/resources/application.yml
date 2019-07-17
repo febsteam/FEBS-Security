@@ -6,6 +6,8 @@ server:
       timeout: 3600
 
 spring:
+  profiles:
+    active: #spring.profiles.active#
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/febs_security?useUnicode=true&characterEncoding=utf8
     username: root

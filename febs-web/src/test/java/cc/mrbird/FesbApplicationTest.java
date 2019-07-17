@@ -1,6 +1,7 @@
 package cc.mrbird;
 
 import org.jasypt.util.text.BasicTextEncryptor;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,6 +25,14 @@ public class FesbApplicationTest {
     @Value("${spring.datasource.password}")
     private String datasourcePassword;
 
+    @Value("${spring.profiles.active}")
+    private String active;
+
+    @Before
+    public void before() {
+        log.info("active：{}", active);
+    }
+
     @Test
     public void test() {
         BasicTextEncryptor encryptor = new BasicTextEncryptor();
@@ -34,4 +43,5 @@ public class FesbApplicationTest {
         log.info("数据库用户名加密结果：{}", encryptedDatasourceUsername);
         log.info("数据库密码加密结果：{}", encryptedDatasourcePassword);
     }
+
 }

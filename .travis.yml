@@ -1,0 +1,23 @@
+dist: trusty
+language: java
+jdk: openjdk8
+cache:
+  directories:
+    - $HOME/.m2
+services:
+  - redis-server
+  - mysql
+addons:
+  apt:
+    sources:
+    - mysql-5.7-trusty
+    packages:
+    - mysql-server
+    - mysql-client
+before_install:
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('123456') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -p123456
+  - sudo service mysql restart
+  - mysql -u root -p123456 -e 'CREATE DATABASE febs_security;'
+install: mvn clean package
+script: mvn test -B -Ptest
