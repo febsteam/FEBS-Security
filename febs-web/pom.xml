@@ -11,6 +11,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>febs-web</artifactId>
 
+    <properties>
+        <resource.delimiter>#</resource.delimiter>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cc.mrbird</groupId>
@@ -50,6 +54,21 @@
             <version>2.1.0</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
