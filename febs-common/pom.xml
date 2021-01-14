@@ -12,7 +12,7 @@
     <artifactId>febs-common</artifactId>
 
     <properties>
-        <poi.version>3.13</poi.version>
+        <poi.version>4.1.2</poi.version>
     </properties>
 
     <dependencies>
